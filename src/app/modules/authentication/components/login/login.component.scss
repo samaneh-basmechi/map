@@ -1,0 +1,22 @@
+@import "../../../../../assets/scss/var";
+
+mat-icon {
+  font-size: 18px !important;
+}
+
+.auth-page {
+  background-color: $green !important;
+}
+
+form {
+  width: 400px;
+  margin: 20px;
+  background-color: white;
+}
+
+.register-link {
+  text-decoration: none;
+  color: $green;
+}
+
+

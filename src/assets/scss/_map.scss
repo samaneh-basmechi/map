@@ -1,0 +1,20 @@
+mgl-map {
+  height: 100vh;
+  overflow: hidden;
+  width: auto;
+}
+.marker {
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+}
+.mapboxgl-popup {
+  font-family: yekan;
+}
+.mapboxgl-ctrl-logo,
+.mapboxgl-ctrl-bottom-right {
+  visibility: hidden;
+}
+.mapboxgl-ctrl{
+  font-family: yekan;
+}

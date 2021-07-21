@@ -1,0 +1,28 @@
+{
+  "public-addresses": [
+    {
+      "name": "پارک ساعی",
+      "address": "استان تهران، تهران، آرژانتین - ساعی، پارک، بوستان ساعی",
+      "latitude": 35.735518506005874,
+      "longitude": 51.41134032860265,
+      "id": 1
+    },
+    {
+      "name": "پارک آب و آتش",
+      "address": "استان تهران، تهران، ونک، شهیدی، هوشیار",
+      "latitude": 35.755527475365646,
+      "longitude": 51.41845928505055,
+      "id": 2
+    }
+  ],
+  "users": [
+    {
+      "email": "samanehbasmechi@gmail.com",
+      "password": "$2a$10$7BB7lROCjWJRU2ev8zV.fOv3Lw4/SuAI28uKi2yIDZbp.I7l.JsBa",
+      "name": "samaneh",
+      "phone": "9121234567",
+      "id": 1
+    }
+  ],
+  "favorite-addresses": []
+}

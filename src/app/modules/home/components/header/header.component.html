@@ -1,0 +1,23 @@
+<div class="d-flex justify-content-end btn-collection">
+  <ng-container *ngIf="(isLogin | async);else authenticate">
+    <button [routerLink]="'/profile'" mat-stroked-button color="green">
+      <mat-icon>assignment_ind</mat-icon>
+      پروفایل شما
+    </button>
+    <button (click)="logOut()" mat-stroked-button color="warn" class="ms-3">
+      <mat-icon>power_settings_new</mat-icon>
+      خروج
+    </button>
+  </ng-container>
+</div>
+
+<ng-template #authenticate>
+  <button [routerLink]="'/authenticate/login'" mat-stroked-button color="green" class="ms-3">
+    <mat-icon>login</mat-icon>
+    ورود
+  </button>
+  <button [routerLink]="'/authenticate/register'" mat-stroked-button color="green" class="ms-3">
+    <mat-icon>person_add_alt</mat-icon>
+    ثبت نام
+  </button>
+</ng-template>

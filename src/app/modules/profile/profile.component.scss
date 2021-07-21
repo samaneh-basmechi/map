@@ -1,0 +1,16 @@
+@import "../../../assets/scss/var";
+
+.profile-page {
+  background-color: $green !important;
+}
+
+.main-body {
+  padding: 15px;
+  width: 700px;
+}
+
+.empty-list-img {
+  width: 100%;
+  height: 200px;
+  opacity: 0.2
+}

@@ -1,0 +1,96 @@
+<div class="profile-page d-flex justify-content-center align-items-center h-100">
+  <div class="main-body">
+
+    <div class="row gutters-sm">
+      <div class="col-md-4 mb-3 d-flex flex-column justify-content-center">
+        <div class="card flex-grow-1">
+          <div class="card-body">
+            <div class="d-flex flex-column align-items-center text-center h-100 justify-content-around">
+              <img src="/assets/images/profile.png" alt="آواتار" width="120">
+              <button *ngIf="isEditing;else editBtn" (click)="edit()" mat-flat-button color="green" class="w-100">
+                ثبت تغییرات
+              </button>
+              <ng-template #editBtn>
+                <button (click)="isEditing=true" mat-stroked-button color="green" class="w-100">
+                  ویرایش اطلاعات
+                </button>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card mb-3">
+          <div class="card-header text-center">
+            پروفایل شما
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <span class="mb-0">نام: </span>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <span>{{userInfo?.name}}</span>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <span class="mb-0">ایمیل:</span>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <span>{{userInfo?.email}}</span>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <span class="mb-0">شماره همراه:</span>
+              </div>
+              <div class="col-sm-9 text-secondary text-start" dir="ltr">
+                <span>+98</span><span>{{userInfo?.phone}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row gutters-sm">
+      <div class="col-sm-12 mb-3">
+        <div class="card h-100">
+          <div class="card-body d-flex flex-column justify-content-center">
+            <img class="empty-list-img" *ngIf="!isEditing;else editBox" src="/assets/images/empty-list.png" alt="admin">
+            <ng-template #editBox>
+              <div class="row">
+                <div class="col-sm-4">
+                  <span class="mb-0">نام و نام خانوادگی: </span>
+                </div>
+                <div class="col-sm-8 text-secondary">
+                  <input [(ngModel)]="userInfo.name" type="text" class="form-control w-100">
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-sm-4">
+                  <span class="mb-0">ایمیل: </span>
+                </div>
+                <div class="col-sm-8 text-secondary">
+                  <input [(ngModel)]="userInfo.email" type="text" class="form-control w-100">
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-sm-4">
+                  <span class="mb-0">شماره همراه: </span>
+                </div>
+                <div class="col-sm-8 text-secondary">
+                  <input [(ngModel)]="userInfo.phone" type="text" class="form-control w-100">
+                </div>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

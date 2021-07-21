@@ -1,0 +1,42 @@
+<div class="w-100 h-100 d-flex align-items-center justify-content-center auth-page">
+  <form [formGroup]="form" (ngSubmit)="login()" class="shadow p-5 text-right">
+
+    <h1 class="text-center pb-3 border-bottom">خوش آمدید!</h1>
+
+    <div class="row">
+      <mat-form-field class="w-100">
+        <mat-label>ایمیل (نام کاربری)</mat-label>
+        <input dir="ltr" class="text-end" formControlName="email" matInput [errorStateMatcher]="matcher"
+               placeholder="sample@gmail.com">
+        <mat-error *ngIf="form.controls['email'].hasError('email') && !form.controls['email'].hasError('required')">
+          لطفا آدرس ایمیل معتبر وارد کنید.
+        </mat-error>
+        <mat-error *ngIf="form.controls['email'].hasError('required')">
+          نام کاربری <strong>اجباری است!</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="w-100">
+        <mat-label>رمز عبور</mat-label>
+        <input dir="ltr" class="text-end" formControlName="password" matInput [type]="hidePass ? 'password' : 'text'">
+        <button class="ms-2" type="button" mat-icon-button matSuffix (click)="hidePass = !hidePass"
+                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePass">
+          <mat-icon>{{hidePass ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="form.controls['password'].hasError('required')">
+          رمز عبور <strong>اجباری است!</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <button [disabled]="form.invalid" type="submit" mat-flat-button color="green" class="w-100 my-3">
+      <mat-icon class="mt-2">login</mat-icon>
+      ورود
+    </button>
+
+    <a class="register-link" [routerLink]="'../register'">حساب کاربری ایجاد نکرده اید؟</a>
+
+  </form>
+</div>

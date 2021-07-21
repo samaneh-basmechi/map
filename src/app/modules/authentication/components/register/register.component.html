@@ -1,0 +1,64 @@
+<div class="w-100 h-100 d-flex align-items-center justify-content-center auth-page">
+  <form [formGroup]="form" (ngSubmit)="register()" class="shadow p-5 text-right">
+
+    <h1 class="text-center pb-3 border-bottom">خوش آمدید!</h1>
+
+    <div class="row">
+      <mat-form-field class="w-100">
+        <mat-label>ایمیل</mat-label>
+        <input dir="ltr" [errorStateMatcher]="matcher" class="text-end" formControlName="email" matInput
+               placeholder="sample@gmail.com">
+        <mat-error *ngIf="form.controls['email'].hasError('email') && !form.controls['email'].hasError('required')">
+          لطفا آدرس ایمیل معتبر وارد کنید.
+        </mat-error>
+        <mat-error *ngIf="form.controls['email'].hasError('required')">
+          آدرس ایمیل <strong>اجباری است!</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="w-100">
+        <mat-label>رمز عبور</mat-label>
+        <input dir="ltr" [type]="hidePass ? 'password' : 'text'"
+               class="text-end" formControlName="password" matInput>
+        <button
+          (click)="hidePass = !hidePass"
+          [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePass"
+          class="ms-2" type="button" mat-icon-button matSuffix>
+          <mat-icon>{{hidePass ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="form.controls['password'].hasError('required')">
+          رمز عبور <strong>اجباری است!</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="w-100">
+        <mat-label>نام</mat-label>
+        <input formControlName="name" matInput>
+        <mat-error *ngIf="form.controls['name'].hasError('required')">
+          نام کاربری <strong>اجباری است!</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="w-100">
+        <mat-label>شماره همراه</mat-label>
+        <input dir="ltr" class="text-end" formControlName="phone" matInput>
+        <span matSuffix class="ps-2">98+</span>
+        <mat-error *ngIf="form.controls['phone'].hasError('required')">
+          شماره همراه <strong>اجباری است!</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <button [disabled]="form.invalid" type="submit" mat-flat-button color="green" class="w-100 mt-3">
+      <mat-icon>person_add_alt</mat-icon>
+      ثبت نام
+    </button>
+
+  </form>
+</div>

@@ -1,0 +1,15 @@
+@import "src/assets/scss/media";
+
+@include smallDisplay {
+  .home-page {
+    padding: 0;
+
+    .map {
+      padding: 0 !important;
+    }
+
+    .info {
+      padding: 10px !important;
+    }
+  }
+}

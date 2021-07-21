@@ -1,0 +1,41 @@
+<mat-card [ngClass]="{'disableDiv': ((status|async)!==null)}" *ngFor="let addressItem of addressArray; let i=index"
+          class="mb-3">
+  <div class="d-flex justify-content-between">
+    <div>
+      <input *ngIf="(indexItem === i) && isEditing ; else addressNameText"
+             [(ngModel)]="addressItem.name"
+             placeholder="عنوان آدرس..."
+             class="form-control mb-3"
+      >
+      <ng-template #addressNameText>
+        <span class="fw-bold me-3">{{addressItem.name}}</span>
+      </ng-template>
+    </div>
+    <div>
+      <mat-icon
+        (click)="saveDeleting(addressItem.id)"
+        matTooltip="حذف" color="warn" class="me-2">delete
+      </mat-icon>
+      <mat-icon
+        *ngIf="(indexItem === i) && isEditing;else edit "
+        (click)="saveEditing(addressItem)"
+        matTooltip="ثبت" color="primary">done
+      </mat-icon>
+      <ng-template #edit>
+        <mat-icon matTooltip="ویرایش" color="primary" class="me-2"
+                  (click)="isEditing = true; indexItem = i; ">edit
+        </mat-icon>
+      </ng-template>
+      <mat-icon (click)="onEditMarkerOnMap(addressItem)" matTooltip="ویرایش روی نقشه" color="green">location_on
+      </mat-icon>
+    </div>
+  </div>
+
+  <textarea *ngIf="(indexItem === i) && isEditing ; else addressText"
+            placeholder="آدرس..."
+            class="form-control mb-3 text-start"
+            [(ngModel)]="addressItem.address"></textarea>
+  <ng-template #addressText>
+    {{addressItem.address}}
+  </ng-template>
+</mat-card>

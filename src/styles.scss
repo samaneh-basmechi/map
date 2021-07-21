@@ -1,0 +1,28 @@
+@import "assets/scss/fonts";
+@import "assets/scss/map";
+@import "assets/scss/custom-material";
+@import "~mapbox-gl/dist/mapbox-gl.css";
+
+html{
+  overflow: hidden
+}
+html, body { height: 100%; direction: rtl }
+body, *:not(mat-icon)  { margin: 0; font-family: yekan, "Helvetica Neue", sans-serif !important; }
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background:#ccffe8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #01ab5c;
+  border-radius: 20px;
+}

@@ -1,0 +1,23 @@
+<mgl-marker #marker [lngLat]="addressItem.item.lngLat">
+  <div id="{{addressItem.item.info.userId}}" [ngStyle]="{cursor: 'pointer'}" class="marker"
+       [style.background-image]="'url(' + markerImg + ')'"></div>
+</mgl-marker>
+<mgl-popup (popupClose)="cancel()" [marker]="marker">
+  <div class="row mt-2">
+    <div class="col-md-12">
+      <span class="fw-bold">{{addressItem.item.info.name}}</span>
+      <br>
+      <span>{{addressItem.item.info.address}}</span>
+    </div>
+  </div>
+  <div class="d-flex justify-content-between mt-3">
+    <button class="me-2" [disabled]="(status | async)!==null"
+            (click)="onEdit(addressItem)"
+            mat-raised-button color="green">ویرایش
+    </button>
+    <button [disabled]="(status | async)!==null"
+            (click)="delete(addressItem)"
+            mat-raised-button color="warn">حذف
+    </button>
+  </div>
+</mgl-popup>

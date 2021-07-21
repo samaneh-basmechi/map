@@ -1,0 +1,12 @@
+@import "src/assets/scss/media";
+
+@include mediumDisplay {
+  .btn-collection {
+    flex-wrap: nowrap;
+    flex-direction: column;
+
+    button {
+      margin: 10px 0 10px 0 !important;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+@mixin veryLargeDisplay {
+  @media screen and (min-width: 1650px) {
+    @content;
+  }
+}
+
+@mixin largeDisplay {
+  @media screen and (min-width: 992px) {
+    @content;
+  }
+}
+
+@mixin mediumDesktop {
+  @media (min-width: 768px) and (max-width: 1300px) {
+    @content;
+  }
+
+}
+
+@mixin mediumDisplay {
+  @media (min-width: 768px) and (max-width: 991px) {
+    @content;
+  }
+}
+
+@mixin smallDisplay {
+  @media screen and (max-width: 767px) {
+    @content;
+  }
+}

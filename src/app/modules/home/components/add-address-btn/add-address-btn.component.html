@@ -1,0 +1,16 @@
+<div class="d-flex justify-content-between btn-collection">
+  <button [disabled]="(status | async)!== null"
+          mat-stroked-button
+          color="green"
+          class="w-100 me-3"
+          (click)="onAddNewPublicAddress()">
+    &nbsp; + &nbsp; افزودن آدرس عمومی جدید
+  </button>
+  <button [disabled]="((status | async)!== null) || (!(isLogin | async))"
+          mat-stroked-button
+          color="green"
+          class="w-100"
+          (click)="onAddNewFavouriteAddress()">
+    &nbsp; + &nbsp; افزودن آدرس منتخب شما
+  </button>
+</div>

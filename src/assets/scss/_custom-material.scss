@@ -1,0 +1,44 @@
+@import "var";
+
+%backGroundGreen{
+  background-color: $green !important;
+}
+
+.mat-focused .mat-form-field-label {
+  color: $green !important;
+}
+.mat-form-field-underline {
+  @extend %backGroundGreen;
+}
+.mat-form-field-ripple {
+  @extend %backGroundGreen;
+}
+.mat-icon {
+  cursor: pointer ;
+}
+.mat-form-field {
+  text-align: right !important;
+}
+.mat-flat-button.mat-green,
+.mat-raised-button.mat-green,
+.mat-fab.mat-green,
+.mat-mini-fab.mat-green {
+  @extend %backGroundGreen;
+  color: white !important;
+}
+.mat-stroked-button.mat-green {
+  color: $green !important;
+}
+.mat-icon.mat-green {
+  color: $green !important;
+}
+.mat-flat-button.mat-button-disabled.mat-button-disabled,
+.mat-raised-button.mat-button-disabled.mat-button-disabled,
+.mat-stroked-button.mat-button-disabled.mat-button-disabled{
+  color: rgba(0,0,0,.26)!important;
+  background-color: $gray !important;
+}
+.mat-simple-snackbar {
+  justify-content: space-around !important;
+}
+

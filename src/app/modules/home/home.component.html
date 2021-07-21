@@ -1,0 +1,97 @@
+<div class="row ps-4 home-page">
+
+  <div class="col-md-3 mt-3 info">
+    <app-header></app-header>
+    <hr>
+    <button
+      [disabled]="!favouriteAddressArray?.length && !publicAddressArray?.length"
+      mat-raised-button color="green" class="w-100 mb-3" (click)="zoomToBounds()">مشاهده کل آدرس ها روی نقشه
+    </button>
+    <app-add-address-btn
+      (updateSelectedMarker)="updateSelectedMarker()"></app-add-address-btn>
+
+    <mat-tab-group mat-align-tabs="start" class="mt-1">
+      <mat-tab label="آدرس های عمومی">
+        <app-public-address-list
+          (getAddressInfoArray)="getPublicAddressArray()"
+          [addressArray]="publicAddressArray"
+          (updatesSelectedMarker)="updateSelectedMarker($event);"
+          (removeSelectedMarkerOfMakers)="removeSelectedMarkerOfMakers($event)"
+        ></app-public-address-list>
+      </mat-tab>
+      <mat-tab label="آدرس های منتخب">
+        <app-favourite-address-list
+          *ngIf="isLogin | async;else login"
+          (getAddressInfoArray)="getFavouriteAddressArray()"
+          [addressArray]="favouriteAddressArray"
+          (updatesSelectedMarker)="updateSelectedMarker($event);"
+          (removeSelectedMarkerOfMakers)="removeSelectedMarkerOfMakers($event)"
+        ></app-favourite-address-list>
+        <ng-template #login>
+          <div class="alert alert-info mt-3" role="alert">
+            برای مشاهده آدرس های منتخب خود لطفا وارد شوید.
+          </div>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+
+  </div>
+
+  <div class="col-md-9 map">
+    <mgl-map
+      (zoomEnd)="fixFloatMarkerInCenterOfMap($event)"
+      (zoomStart)="fixFloatMarkerInCenterOfMap($event)"
+      (mapDrag)="fixFloatMarkerInCenterOfMap($event)"
+      (load)="getPublicAddressArray();"
+      [attributionControl]="true"
+      [fitBounds]="bounds"
+      [fitBoundsOptions]="{padding: 100} "
+      [style]="'mapbox://styles/mapbox/streets-v9'"
+      [zoom]="mapZoomAmount"
+      [center]="centerMapLngLat">
+
+      <mgl-control [position]="'top-left'">
+        <app-search-address
+          (setMapZoomAmount)="mapZoomAmount = $event"
+          (setCenterMapLngLat)="centerMapLngLat = $event"
+        ></app-search-address>
+      </mgl-control>
+
+      <app-edit-on-map
+        (getAddressesInfo)="getAddressesArray()"
+        [selectedMarker]="selectedMarker"
+      ></app-edit-on-map>
+
+      <app-add-on-map
+        (getAddressesInfo)="getAddressesArray()"
+        [selectedMarker]="selectedMarker"
+      ></app-add-on-map>
+
+      <ng-container *ngFor="let address of publicAddressMarkers.geometry">
+        <app-marker
+          [type]="'PUBLIC_ADDRESS_EDITING'"
+          [addressItem]="address"
+          [markerImg]="Images.publicAddressMarkerImg"
+          (updatesSelectedMarker)="updateSelectedMarker($event);"
+          (removeSelectedMarkerOfMakers)="removeSelectedMarkerOfMakers($event)"
+          (getAddressInfoArray)="getPublicAddressArray()"
+        ></app-marker>
+      </ng-container>
+
+      <ng-container *ngFor="let favouriteAddressInfo of favouriteAddressMarkers.geometry">
+        <app-marker
+          [type]="'FAVOURITE_ADDRESS_EDITING'"
+          [addressItem]="favouriteAddressInfo"
+          [markerImg]="Images.favouriteAddressMarkerImg"
+          (updatesSelectedMarker)="updateSelectedMarker($event);"
+          (removeSelectedMarkerOfMakers)="removeSelectedMarkerOfMakers($event)"
+          (getAddressInfoArray)="getFavouriteAddressArray()"
+        ></app-marker>
+      </ng-container>
+
+    </mgl-map>
+  </div>
+
+</div>
+
+

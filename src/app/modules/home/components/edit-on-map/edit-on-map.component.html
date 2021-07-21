@@ -1,0 +1,30 @@
+<ng-container *ngIf="((status | async)==='PUBLIC_ADDRESS_EDITING') || (status | async)==='FAVOURITE_ADDRESS_EDITING'">
+  <mgl-marker [lngLat]="[selectedMarker?.longitude , selectedMarker?.latitude]">
+    <div [ngStyle]="{cursor: 'pointer'}"
+         [style.background-image]="'url(' + images.addMarkerImg + ')'"
+         class="marker">
+    </div>
+  </mgl-marker>
+  <mgl-popup (popupClose)="cancel()" [lngLat]="[selectedMarker?.longitude , selectedMarker?.latitude]"
+             [closeOnClick]="false">
+
+    <div class="row mt-3">
+      <div class="col-md-12 pb-2 d-flex justify-content-center">
+        <span *ngIf="(status | async)==='PUBLIC_ADDRESS_EDITING';else favouriteTitle">ویرایش آدرس عمومی</span>
+        <ng-template #favouriteTitle><span>ویرایش آدرس منتخب</span></ng-template>
+      </div>
+      <div class="col-md-12 pb-2">
+        <input class="w-100" type="text" [(ngModel)]="selectedMarker.name">
+      </div>
+      <div class="col-md-12 d-flex justify-content-between">
+        <button [disabled]="!selectedMarker.name" class="me-2" (click)="save()"
+                mat-raised-button color="green">
+          ثبت تغییرات
+        </button>
+        <button (click)="cancel()" mat-raised-button color="warn">
+          انصراف
+        </button>
+      </div>
+    </div>
+  </mgl-popup>
+</ng-container>

@@ -1,0 +1,22 @@
+@import "src/assets/scss/var";
+
+.search {
+  background-color: white;
+  color: $green;
+}
+
+::placeholder {
+  color: $green;
+}
+
+.search-items {
+  background-color: $green;
+  max-height: 600px;
+  overflow: scroll;
+
+  ul {
+    li {
+      color: white;
+    }
+  }
+}

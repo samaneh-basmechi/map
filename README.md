@@ -1,6 +1,5 @@
 # Map
 
-## Demo
 
 ![til](./src/assets/images/Demo.png)
 
@@ -28,15 +27,16 @@ Go to base directory and
     ```bash
     npm install
     ```
-
+    
 - Start the project
 
     ```bash
     npm start
-    or
+    ```
+     or
+    ```bash
     ng serve
     ```
-    
 ## Development server
 
 Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

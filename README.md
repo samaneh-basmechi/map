@@ -1,4 +1,4 @@
-# Map
+# Map (Angular)
 
 
 ![til](./src/assets/images/Demo.png)
